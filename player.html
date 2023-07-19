@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Web Player - Ouvir Áudio</title>
+</head>
+<body>
+    <h1>Áudio para Ouvir</h1>
+    <audio id="audioPlayer" controls>
+        <!-- O campo 'src' será preenchido com a URL recebida via parâmetro na URL -->
+        <source id="audioSource" type="audio/mpeg">
+        Seu navegador não suporta a reprodução de áudio.
+    </audio>
+
+    <script>
+        // Pega a referência para o elemento de áudio e a URL recebida via parâmetro na URL
+        const audioPlayer = document.getElementById('audioPlayer');
+        const audioSource = document.getElementById('audioSource');
+        const urlParams = new URLSearchParams(window.location.search);
+        const audioURL = urlParams.get('url');
+
+        // Define o valor do atributo 'src' do elemento de áudio com a URL recebida
+        audioSource.setAttribute('src', audioURL);
+
+        // Carrega o áudio
+        audioPlayer.load();
+    </script>
+</body>
+</html>
