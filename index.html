@@ -5,15 +5,25 @@
 </head>
 <body>
     <h1>Web Player Safari em iOS</h1>
-    <audio id="audioPlayer" controls>
-        <!-- Inclua aqui a URL da música ou áudio -->
-        <source src="https://producaocomercial.morenafm.com.br/arquivo.php?nj&a=TUFURVJJQUlTLy9QZWRpZG9fMTI0OF9hdWRpb19WMS5tcDM=" type="audio/mpeg">
-        Seu navegador não suporta a reprodução de áudio.
-    </audio>
-    
+    <label for="sourceInput">Digite a URL do áudio:</label>
+    <input type="text" id="sourceInput" placeholder="URL do áudio">
+
     <br>
     <br>
+
+    <button onclick="loadAudio()">Carregar Áudio</button>
+
+    <script>
+        function loadAudio() {
+            // Pega o valor inserido no campo de input
+            const audioURL = document.getElementById('sourceInput').value;
+
+            // Redireciona para a página de ouvir o player com a URL do áudio como parâmetro
+            window.location.href = `player.html?url=${encodeURIComponent(audioURL)}`;
+        }
+    </script>
 </body>
 </html>
+
 
 <!-- By TiC | Tecnologia da Informação & Comunicação -->
