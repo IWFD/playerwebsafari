@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Web Player para o Safari - Versão Alpha</title>
+</head>
+<body>
+    <h1>Web Player Safari - Versão Alpha</h1>
+    <audio id="audioPlayer" controls>
+        <!-- Xômano Inclui aqui a URL da música ou áudio -->
+        <source src="https://producaocomercial.morenafm.com.br/arquivo.php?nj&a=TUFURVJJQUlTLy9QZWRpZG9fMTI0OF9hdWRpb19WMS5tcDM=" type="audio/mpeg">
+        Seu navegador não suporta a reprodução de áudio.
+    </audio>
+    
+    <br>
+    <br>
+
+    <video id="videoPlayer" controls>
+        <!-- Xômano Inclui aqui a URL do vídeo -->
+        <source src="caminho/para/video.mp4" type="video/mp4">
+        Seu navegador não suporta a reprodução de vídeo.
+    </video>
+
+    <script>
+        // Pega as referências para os elementos de áudio e vídeo
+        const audioPlayer = document.getElementById('audioPlayer');
+        const videoPlayer = document.getElementById('videoPlayer');
+
+        // Faz a validação se o navegador é o Safari
+        const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
+        // Se for o Safari, vai chamar o plugin QuickTime para reproduzir o áudio ou vídeo
+        if (isSafari) {
+            // Remove o elemento de áudio e vídeo HTML5
+            audioPlayer.remove();
+            videoPlayer.remove();
+
+            // Aqui cria o objeto QuickTime para reprodução de áudio
+            const quickTimeAudio = document.createElement('object');
+            quickTimeAudio.setAttribute('data', 'caminho/para/musica.mp3');
+            quickTimeAudio.setAttribute('type', 'audio/x-mpeg');
+            quickTimeAudio.setAttribute('width', '300');
+            quickTimeAudio.setAttribute('height', '45');
+
+            // Aqui cria o objeto QuickTime para reprodução de vídeo
+            const quickTimeVideo = document.createElement('object');
+            quickTimeVideo.setAttribute('data', 'caminho/para/video.mp4');
+            quickTimeVideo.setAttribute('type', 'video/mp4');
+            quickTimeVideo.setAttribute('width', '640');
+            quickTimeVideo.setAttribute('height', '360');
+
+            // Aqui adiciona os objetos QuickTime à página em específico
+            document.body.appendChild(quickTimeAudio);
+            document.body.appendChild(quickTimeVideo);
+        }
+    </script>
+</body>
+</html>
+<!-- By TiC | Tecnologia da Informação & Comunicação -->
